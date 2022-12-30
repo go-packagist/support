@@ -2,7 +2,7 @@ package strings
 
 import (
 	"regexp"
-	str "strings"
+	_s "strings"
 )
 
 // Is returns true if the value matches the pattern.
@@ -14,7 +14,7 @@ func Is(pattern, value string) bool {
 		return true
 	}
 
-	pattern = str.ReplaceAll(pattern, "*", ".*")
+	pattern = _s.ReplaceAll(pattern, "*", ".*")
 
 	match, err := regexp.Match(pattern, []byte(value))
 	if err != nil {
