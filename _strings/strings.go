@@ -1,4 +1,4 @@
-package strings
+package _strings
 
 import (
 	"regexp"
@@ -7,8 +7,11 @@ import (
 
 // Is returns true if the value matches the pattern.
 // The pattern can contain the wildcard character *.
-// example: Is("*.example.com", "www.example.com") // true
-// example: Is("*.example.com", "example.com") // false
+//
+// example:
+//
+//	Is("*.example.com", "www.example.com") // true
+//	Is("*.example.com", "example.com") // false
 func Is(pattern, value string) bool {
 	if pattern == value {
 		return true
@@ -22,4 +25,15 @@ func Is(pattern, value string) bool {
 	}
 
 	return match
+}
+
+// InArray checks if a string is in a string array.
+func InArray(needle string, haystack []string) bool {
+	for _, v := range haystack {
+		if v == needle {
+			return true
+		}
+	}
+
+	return false
 }

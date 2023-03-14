@@ -1,4 +1,4 @@
-package strings
+package _strings
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -17,4 +17,11 @@ func TestIs(t *testing.T) {
 	assert.True(t, Is("ab/*", "ab/cc/dd"))
 	assert.True(t, Is("*dd/", "ab/cc/dd/"))
 	assert.False(t, Is("*dd/d", "dd/"))
+}
+
+func TestInArray(t *testing.T) {
+	assert.True(t, InArray("1", []string{"1", "2"}))
+	assert.True(t, InArray("2", []string{"1", "2"}))
+	assert.False(t, InArray("3", []string{"1", "2"}))
+	assert.False(t, InArray("12", []string{"1", "2"}))
 }
