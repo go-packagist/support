@@ -25,3 +25,37 @@ func TestInArray(t *testing.T) {
 	assert.False(t, InArray("3", []string{"1", "2"}))
 	assert.False(t, InArray("12", []string{"1", "2"}))
 }
+
+func TestMd5(t *testing.T) {
+	assert.Equal(t, "900150983cd24fb0d6963f7d28e17f72", Md5("abc"))
+}
+
+func TestStrpos(t *testing.T) {
+	assert.Equal(t, 0, Strpos("aabbcc", "a"))
+	assert.Equal(t, 2, Strpos("aabbcc", "b"))
+	assert.Equal(t, -1, Strpos("aabbcc", "d"))
+}
+
+func TestStrrpos(t *testing.T) {
+	assert.Equal(t, 1, Strrpos("aabbcc", "a"))
+	assert.Equal(t, 3, Strrpos("aabbcc", "b"))
+	assert.Equal(t, -1, Strrpos("aabbcc", "d"))
+}
+
+func TestStrrev(t *testing.T) {
+	assert.Equal(t, "cba", Strrev("abc"))
+}
+
+func TestStrtr(t *testing.T) {
+	assert.Equal(t, "bbbbcc", Strtr("aabbcc", "a", "b"))
+}
+
+// todo: to be fixed
+// func TestStrtrArray(t *testing.T) {
+// 	assert.Equal(t, "ddffcc", StrtrArray("aabbcc", map[string]string{"a": "d", "b": "f"}))
+// 	assert.Equal(t, "ffffcc", StrtrArray("aabbcc", map[string]string{"a": "b", "b": "f"}))
+// }
+
+func TestStrShuffle(t *testing.T) {
+	assert.True(t, InArray(StrShuffle("abc"), []string{"abc", "acb", "bac", "bca", "cab", "cba"}))
+}
