@@ -128,3 +128,21 @@ func StrShuffle(s string) string {
 
 	return strings.Join(ss, "")
 }
+
+// RandomString returns a random string with the specified length.
+//
+// Example:
+//
+//	RandomString(10) // "qujrlkhyqr"
+func RandomString(length int) string {
+	var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	var lettersLength = len(letters)
+
+	b := make([]rune, length)
+
+	for i := range b {
+		b[i] = letters[rand.Intn(lettersLength)]
+	}
+
+	return string(b)
+}
