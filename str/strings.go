@@ -2,6 +2,7 @@ package str
 
 import (
 	"crypto/md5"
+	"crypto/sha1"
 	"fmt"
 	"math/rand"
 	"regexp"
@@ -52,6 +53,17 @@ func InArray(needle string, haystack []string) bool {
 //	Md5("abc") // 900150983cd24fb0d6963f7d28e17f72
 func Md5(s string) string {
 	sm := md5.Sum([]byte(s))
+
+	return fmt.Sprintf("%x", sm)
+}
+
+// Sha1 returns the sha1 hash of a string.
+//
+// Example:
+//
+//	Sha1("abc") // a9993e364706816aba3e25717850c26c9cd0d89d
+func Sha1(s string) string {
+	sm := sha1.Sum([]byte(s))
 
 	return fmt.Sprintf("%x", sm)
 }
@@ -135,7 +147,7 @@ func StrShuffle(s string) string {
 //
 //	RandomString(10) // "qujrlkhyqr"
 func RandomString(length int) string {
-	var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	var letters = []rune(randomStringLetters)
 	var lettersLength = len(letters)
 
 	b := make([]rune, length)
@@ -145,4 +157,85 @@ func RandomString(length int) string {
 	}
 
 	return string(b)
+}
+
+// StrPad returns an input string padded on the left or right to specified length with pad string.
+//
+// Example:
+//
+//	StrPad("abc", 6, " ", StrPadLeft) // "   abc"
+//	StrPad("abc", 6, " ", StrPadRight) // "abc   "
+//	StrPad("abc", 6, " ", StrPadBoth) // " abc  "
+func StrPad(s string, length int, pad string, padType StrPadType) string {
+	if len(s) >= length {
+		return s
+	}
+
+	switch padType {
+	case StrPadLeft:
+		return strings.Repeat(pad, length-len(s)) + s
+	case StrPadRight:
+		return s + strings.Repeat(pad, length-len(s))
+	case StrPadBoth:
+		length = length - len(s)
+		paddingLeft := strings.Repeat(pad, (length)/2)
+		paddingRight := strings.Repeat(pad, (length)/2+(length)%2)
+		return paddingLeft + s + paddingRight
+	default:
+		return s
+	}
+}
+
+// Length returns the length of a string.
+// support chinese characters.
+//
+// Example:
+//
+//	Length("abc") // 3
+//	Length("张三李四") // 4
+func Length(s string) int {
+	return len([]rune(s))
+}
+
+// Strcut returns a string with a specified length starting from a specified position.
+// support chinese characters.
+//
+// Example:
+//
+//	Strcut("abc", 1, 1) // "b"
+//	Strcut("张三李四", 1, 2) // "三李
+func Strcut(s string, start, length int) string {
+	sr := []rune(s)
+
+	if len(sr) <= start {
+		return ""
+	}
+
+	if len(sr) <= start+length {
+		return string(sr[start:])
+	}
+
+	return string(sr[start : start+length])
+}
+
+// Limit returns a string with a specified length.
+// support chinese characters.
+//
+// Example:
+//
+//	Limit("abc", 2) // "ab"
+//	Limit("张三李四", 2) // "张三"
+//	Limit("张三李四", 2, "...") // "张三..."
+func Limit(s string, length int, suffix ...string) string {
+	sr, sf := []rune(s), ""
+
+	if len(sr) <= length {
+		return s
+	}
+
+	if len(suffix) > 0 {
+		sf = suffix[0]
+	}
+
+	return string(sr[:length]) + sf
 }

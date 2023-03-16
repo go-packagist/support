@@ -17,6 +17,10 @@ func TestString_Md5(t *testing.T) {
 	assert.Equal(t, "900150983cd24fb0d6963f7d28e17f72", String("abc").Md5())
 }
 
+func TestString_Sha1(t *testing.T) {
+	assert.Equal(t, "a9993e364706816aba3e25717850c26c9cd0d89d", String("abc").Sha1())
+}
+
 func TestString_Strpos(t *testing.T) {
 	assert.Equal(t, 0, String("aabbcc").Strpos("a"))
 }
@@ -46,4 +50,32 @@ func TestString_Atoi(t *testing.T) {
 	assert.False(t, String("a").Atoi().IsOk())
 	assert.False(t, String("1").Atoi().IsErr())
 	assert.True(t, String("a").Atoi().IsErr())
+}
+
+func TestString_Bytes(t *testing.T) {
+	assert.Equal(t, []byte("abc"), String("abc").Bytes())
+}
+
+func TestString_StrPad(t *testing.T) {
+	assert.Equal(t, "   abc", String("abc").StrPad(6, " ", StrPadLeft))
+	assert.Equal(t, "abc   ", String("abc").StrPad(6, " ", StrPadRight))
+	assert.Equal(t, " abc  ", String("abc").StrPad(6, " ", StrPadBoth))
+}
+
+func TestString_Strcut(t *testing.T) {
+	assert.Equal(t, "a", String("abc").Strcut(0, 1))
+	assert.Equal(t, "ab", String("abc").Strcut(0, 2))
+	assert.Equal(t, "bc", String("abc").Strcut(1, 2))
+	assert.Equal(t, "c", String("abc").Strcut(2, 1))
+}
+
+func TestString_Limit(t *testing.T) {
+	assert.Equal(t, "a...", String("abc").Limit(1, "..."))
+	assert.Equal(t, "ab...", String("abc").Limit(2, "..."))
+	assert.Equal(t, "abc", String("abc").Limit(3, "..."))
+	assert.Equal(t, "abc", String("abc").Limit(4, "..."))
+}
+
+func TestString_Length(t *testing.T) {
+	assert.Equal(t, 3, String("abc").Length())
 }
