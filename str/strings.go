@@ -1,4 +1,4 @@
-package _strings
+package str
 
 import (
 	"crypto/md5"

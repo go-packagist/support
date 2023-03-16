@@ -1,4 +1,4 @@
-package _strings
+package str
 
 import (
 	"github.com/stretchr/testify/assert"
