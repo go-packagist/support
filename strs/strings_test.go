@@ -1,4 +1,4 @@
-package str
+package strs
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -61,7 +61,7 @@ func TestStrtr(t *testing.T) {
 // }
 
 func TestStrShuffle(t *testing.T) {
-	assert.True(t, InArray(StrShuffle("abc"), []string{"abc", "acb", "bac", "bca", "cab", "cba"}))
+	assert.True(t, InArray(Shuffle("abc"), []string{"abc", "acb", "bac", "bca", "cab", "cba"}))
 }
 
 func TestRandomString(t *testing.T) {

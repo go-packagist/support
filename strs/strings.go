@@ -1,4 +1,4 @@
-package str
+package strs
 
 import (
 	"crypto/md5"
@@ -126,12 +126,12 @@ func Strtr(s, from, to string) string {
 // 	return s
 // }
 
-// StrShuffle returns a string with its characters in random order.
+// Shuffle returns a string with its characters in random order.
 //
 // Example:
 //
-//	StrShuffle("abc") // "bca"
-func StrShuffle(s string) string {
+//	Shuffle("abc") // "bca"
+func Shuffle(s string) string {
 	ss := strings.Split(s, "")
 
 	rand.Shuffle(len(ss), func(i, j int) {

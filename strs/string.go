@@ -1,6 +1,11 @@
-package str
+package strs
 
 type String string
+
+// String returns the string value.
+func (s String) Val() string {
+	return string(s)
+}
 
 // Is checks if the string matches the pattern.
 func (s String) Is(pattern string) bool {
@@ -42,9 +47,9 @@ func (s String) Strtr(from, to string) string {
 	return Strtr(string(s), from, to)
 }
 
-// StrShuffle returns a string with the characters in reverse order.
-func (s String) StrShuffle() string {
-	return StrShuffle(string(s))
+// Shuffle returns a string with the characters in reverse order.
+func (s String) Shuffle() string {
+	return Shuffle(string(s))
 }
 
 // Atoi returns the integer value of a string.
