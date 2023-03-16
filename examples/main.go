@@ -6,12 +6,12 @@ import (
 )
 
 func main() {
-	strCase()
-	intCase()
+	strsCase()
+	intsCase()
 }
 
-func strCase() {
-	// strings
+func strsCase() {
+	// strs
 	println(strs.InArray("abc", []string{"abc", "def"}))
 	println(strs.Is("ab*", "abc"))
 	println(strs.Md5("abc"))
@@ -25,7 +25,7 @@ func strCase() {
 	println(strs.Strcut("abc", 0, 1))
 	println(strs.Limit("abc", 1, "..."))
 
-	// string Atoi
+	// strs Atoi
 	println(strs.Atoi("1").Val())
 	println(strs.Atoi("a").Err())
 	println(strs.Atoi("a").IsOk())
@@ -50,6 +50,24 @@ func strCase() {
 	println(strs.String("abc").Limit(1, "..."))
 }
 
-func intCase() {
+func intsCase() {
+	// ints
 	ints.InArray(1, []int{1, 2, 3})
+	ints.Itoa(1)
+	ints.Max(1, 2)
+	ints.Min(1, 2, 3, 4)
+	ints.Range(1, 10)
+	ints.Random(1, 10)
+	ints.RandomString(10)
+	ints.Split("1,2,3", ",")
+	ints.Between(1, 2, 3)
+
+	// Type Int
+	ints.Int(1).InArray([]int{1, 2, 3})
+	ints.Int(1).Itoa()
+	ints.Int(1).String()
+	ints.Int(1).Bytes()
+	ints.Int(1).Val()
+	ints.Int(1).Between(1, 2)
+
 }

@@ -26,3 +26,8 @@ func (i Int) String() string {
 func (i Int) Bytes() []byte {
 	return []byte(i.String())
 }
+
+// Between returns true if the int is between min and max.
+func (i Int) Between(min, max int) bool {
+	return Between(int(i), min, max)
+}
