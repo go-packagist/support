@@ -69,5 +69,4 @@ func intsCase() {
 	ints.Int(1).Bytes()
 	ints.Int(1).Val()
 	ints.Int(1).Between(1, 2)
-
 }
