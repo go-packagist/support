@@ -71,3 +71,35 @@ func TestRandomString(t *testing.T) {
 	assert.Equal(t, 10, len(r2))
 	assert.NotEqual(t, r1, r2)
 }
+
+func TestStrPad(t *testing.T) {
+	assert.Equal(t, "---abc", StrPad("abc", 6, "-", StrPadLeft))
+	assert.Equal(t, "abc---", StrPad("abc", 6, "-", StrPadRight))
+	assert.Equal(t, "--abc--", StrPad("abc", 7, "-", StrPadBoth))
+	assert.Equal(t, "abc", StrPad("abc", 2, "-", StrPadBoth))
+	assert.Equal(t, "--abc---", StrPad("abc", 8, "-", StrPadBoth))
+	assert.Equal(t, "abc", StrPad("abc", 2, "-", StrPadBoth))
+}
+
+func TestLength(t *testing.T) {
+	assert.Equal(t, 3, Length("abc"))
+	assert.Equal(t, 4, Length("张三李四"))
+}
+
+func TestStrcut(t *testing.T) {
+	assert.Equal(t, "abc", Strcut("abc", 0, 3))
+	assert.Equal(t, "张三李", Strcut("张三李四", 0, 3))
+	assert.Equal(t, "张三李四", Strcut("张三李四", 0, 4))
+	assert.Equal(t, "张三李四", Strcut("张三李四", 0, 5))
+	assert.Equal(t, "张三李四", Strcut("张三李四", 0, 6))
+	assert.Equal(t, "李四", Strcut("张三李四", 2, 2))
+}
+
+func TestLimit(t *testing.T) {
+	assert.Equal(t, "abc", Limit("abc", 3))
+	assert.Equal(t, "ab", Limit("abc", 2))
+	assert.Equal(t, "a", Limit("abc", 1))
+	assert.Equal(t, "", Limit("abc", 0))
+	assert.Equal(t, "张三", Limit("张三李四", 2))
+	assert.Equal(t, "张...", Limit("张三李四", 1, "..."))
+}

@@ -42,7 +42,37 @@ func (s String) Strtr(from, to string) string {
 	return Strtr(string(s), from, to)
 }
 
+// StrShuffle returns a string with the characters in reverse order.
+func (s String) StrShuffle() string {
+	return StrShuffle(string(s))
+}
+
 // Atoi returns the integer value of a string.
 func (s String) Atoi() AtoiRes {
 	return Atoi(string(s))
+}
+
+// StrPad returns a string padded to a certain length with another string.
+func (s String) StrPad(length int, pad string, padType StrPadType) string {
+	return StrPad(string(s), length, pad, padType)
+}
+
+// Bytes returns the bytes of the string.
+func (s String) Bytes() []byte {
+	return []byte(s)
+}
+
+// Length returns the length of the string.
+func (s String) Length() int {
+	return Length(string(s))
+}
+
+// Strcut returns part of a string.
+func (s String) Strcut(start, length int) string {
+	return Strcut(string(s), start, length)
+}
+
+// Limit returns part of a string.
+func (s String) Limit(length int, suffix ...string) string {
+	return Limit(string(s), length, suffix...)
 }

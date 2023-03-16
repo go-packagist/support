@@ -51,3 +51,31 @@ func TestString_Atoi(t *testing.T) {
 	assert.False(t, String("1").Atoi().IsErr())
 	assert.True(t, String("a").Atoi().IsErr())
 }
+
+func TestString_Bytes(t *testing.T) {
+	assert.Equal(t, []byte("abc"), String("abc").Bytes())
+}
+
+func TestString_StrPad(t *testing.T) {
+	assert.Equal(t, "   abc", String("abc").StrPad(6, " ", StrPadLeft))
+	assert.Equal(t, "abc   ", String("abc").StrPad(6, " ", StrPadRight))
+	assert.Equal(t, " abc  ", String("abc").StrPad(6, " ", StrPadBoth))
+}
+
+func TestString_Strcut(t *testing.T) {
+	assert.Equal(t, "a", String("abc").Strcut(0, 1))
+	assert.Equal(t, "ab", String("abc").Strcut(0, 2))
+	assert.Equal(t, "bc", String("abc").Strcut(1, 2))
+	assert.Equal(t, "c", String("abc").Strcut(2, 1))
+}
+
+func TestString_Limit(t *testing.T) {
+	assert.Equal(t, "a...", String("abc").Limit(1, "..."))
+	assert.Equal(t, "ab...", String("abc").Limit(2, "..."))
+	assert.Equal(t, "abc", String("abc").Limit(3, "..."))
+	assert.Equal(t, "abc", String("abc").Limit(4, "..."))
+}
+
+func TestString_Length(t *testing.T) {
+	assert.Equal(t, 3, String("abc").Length())
+}
