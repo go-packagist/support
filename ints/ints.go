@@ -62,3 +62,47 @@ func Range(min, max int) []int {
 
 	return arr
 }
+
+// Min returns the minimum of ints.
+func Min(v ...int) int {
+	min := v[0]
+
+	for _, v := range v {
+		if v < min {
+			min = v
+		}
+	}
+
+	return min
+}
+
+// Max returns the maximum of ints.
+func Max(v ...int) int {
+	max := v[0]
+
+	for _, v := range v {
+		if v > max {
+			max = v
+		}
+	}
+
+	return max
+}
+
+// Sum returns the sum of ints.
+func Sum(v ...int) int {
+	sum := 0
+
+	for _, v := range v {
+		sum += v
+	}
+
+	return sum
+}
+
+// Between returns true if val is between min and max.
+func Between(val, min, max int) bool {
+	min, max = Min(min, max), Max(min, max)
+
+	return val >= min && val <= max
+}

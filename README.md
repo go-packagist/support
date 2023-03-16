@@ -19,49 +19,75 @@ go get github.com/go-packagist/support
 package main
 
 import (
-	"github.com/go-packagist/support/str"
+	"github.com/go-packagist/support/ints"
+	"github.com/go-packagist/support/strs"
 )
 
 func main() {
-	// strings
-	println(str.InArray("abc", []string{"abc", "def"}))
-	println(str.Is("ab*", "abc"))
-	println(str.Md5("abc"))
-	println(str.Strpos("aabbcc", "a"))
-	println(str.Strrpos("aabbcc", "a"))
-	println(str.Strrev("abc"))
-	println(str.Strtr("aabbcc", "a", "b"))
-	println(str.StrShuffle("abc"))
-	println(str.StrPad("abc", 6, " ", str.StrPadLeft))
-	println(str.Length("张三")) // 2
-	println(str.Strcut("abc", 0, 1))
-	println(str.Limit("abc", 1, "..."))
-
-	// string Atoi
-	println(str.Atoi("1").Val())
-	println(str.Atoi("a").Err())
-	println(str.Atoi("a").IsOk())
-
-	// Type String
-	println(str.String("abc").Is("ab*"))
-	println(str.String("abc").InArray([]string{"abc", "def"}))
-	println(str.String("abc").Md5())
-	println(str.String("abc").Sha1())
-	println(str.String("aabbcc").Strpos("a"))
-	println(str.String("aabbcc").Strrpos("a"))
-	println(str.String("abc").Strrev())
-	println(str.String("aabbcc").Strtr("a", "b"))
-	println(str.String("abc").StrShuffle())
-	println(str.String("1").Atoi().Val())
-	println(str.String("a").Atoi().Err())
-	println(str.String("a").Atoi().IsOk())
-	println(str.String("abc").Bytes())
-	println(str.String("abc").StrPad(6, " ", str.StrPadLeft))
-	println(str.String("张三").Length()) // 2
-	println(str.String("abc").Strcut(0, 1))
-	println(str.String("abc").Limit(1, "..."))
+	strsCase()
+	intsCase()
 }
 
+func strsCase() {
+	// strs
+	println(strs.InArray("abc", []string{"abc", "def"}))
+	println(strs.Is("ab*", "abc"))
+	println(strs.Md5("abc"))
+	println(strs.Strpos("aabbcc", "a"))
+	println(strs.Strrpos("aabbcc", "a"))
+	println(strs.Strrev("abc"))
+	println(strs.Strtr("aabbcc", "a", "b"))
+	println(strs.Shuffle("abc"))
+	println(strs.StrPad("abc", 6, " ", strs.StrPadLeft))
+	println(strs.Length("张三")) // 2
+	println(strs.Strcut("abc", 0, 1))
+	println(strs.Limit("abc", 1, "..."))
+
+	// strs Atoi
+	println(strs.Atoi("1").Val())
+	println(strs.Atoi("a").Err())
+	println(strs.Atoi("a").IsOk())
+
+	// Type String
+	println(strs.String("abc").Is("ab*"))
+	println(strs.String("abc").InArray([]string{"abc", "def"}))
+	println(strs.String("abc").Md5())
+	println(strs.String("abc").Sha1())
+	println(strs.String("aabbcc").Strpos("a"))
+	println(strs.String("aabbcc").Strrpos("a"))
+	println(strs.String("abc").Strrev())
+	println(strs.String("aabbcc").Strtr("a", "b"))
+	println(strs.String("abc").Shuffle())
+	println(strs.String("1").Atoi().Val())
+	println(strs.String("a").Atoi().Err())
+	println(strs.String("a").Atoi().IsOk())
+	println(strs.String("abc").Bytes())
+	println(strs.String("abc").StrPad(6, " ", strs.StrPadLeft))
+	println(strs.String("张三").Length()) // 2
+	println(strs.String("abc").Strcut(0, 1))
+	println(strs.String("abc").Limit(1, "..."))
+}
+
+func intsCase() {
+	// ints
+	ints.InArray(1, []int{1, 2, 3})
+	ints.Itoa(1)
+	ints.Max(1, 2)
+	ints.Min(1, 2, 3, 4)
+	ints.Range(1, 10)
+	ints.Random(1, 10)
+	ints.RandomString(10)
+	ints.Split("1,2,3", ",")
+	ints.Between(1, 2, 3)
+
+	// Type Int
+	ints.Int(1).InArray([]int{1, 2, 3})
+	ints.Int(1).Itoa()
+	ints.Int(1).String()
+	ints.Int(1).Bytes()
+	ints.Int(1).Val()
+	ints.Int(1).Between(1, 2)
+}
 ```
 
 ## License

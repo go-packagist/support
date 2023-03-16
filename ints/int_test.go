@@ -29,3 +29,9 @@ func TestInt_Val(t *testing.T) {
 	assert.Equal(t, 1, Int(1).Val())
 	assert.Equal(t, 2, Int(2).Val())
 }
+
+func TestInt_Between(t *testing.T) {
+	assert.True(t, Int(1).Between(1, 2))
+	assert.True(t, Int(2).Between(1, 2))
+	assert.False(t, Int(3).Between(1, 2))
+}

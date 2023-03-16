@@ -42,3 +42,28 @@ func TestRange(t *testing.T) {
 	assert.Equal(t, []int{1, 2, 3}, Range(1, 3))
 	assert.Equal(t, []int{1, 2, 3, 4}, Range(1, 4))
 }
+
+func TestMin(t *testing.T) {
+	assert.Equal(t, 1, Min(1, 2, 3))
+	assert.Equal(t, 1, Min(1, 2, 3, 4))
+	assert.Equal(t, 1, Min(1, 2, 3, 4, 5))
+}
+
+func TestMax(t *testing.T) {
+	assert.Equal(t, 3, Max(1, 2, 3))
+	assert.Equal(t, 4, Max(1, 2, 3, 4))
+	assert.Equal(t, 5, Max(1, 2, 3, 4, 5))
+}
+
+func TestSum(t *testing.T) {
+	assert.Equal(t, 6, Sum(1, 2, 3))
+	assert.Equal(t, 10, Sum(1, 2, 3, 4))
+	assert.Equal(t, 15, Sum(1, 2, 3, 4, 5))
+}
+
+func TestBetween(t *testing.T) {
+	assert.True(t, Between(1, 1, 3))
+	assert.True(t, Between(2, 1, 3))
+	assert.True(t, Between(3, 1, 3))
+	assert.False(t, Between(4, 1, 3))
+}
