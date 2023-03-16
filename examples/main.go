@@ -39,5 +39,7 @@ func main() {
 	println(str.String("a").Atoi().IsOk())
 	println(str.String("abc").Bytes())
 	println(str.String("abc").StrPad(6, " ", str.StrPadLeft))
-
+	println(str.String("张三").Length()) // 2
+	println(str.String("abc").Strcut(0, 1))
+	println(str.String("abc").Limit(1, "..."))
 }
