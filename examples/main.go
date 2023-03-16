@@ -24,4 +24,5 @@ func main() {
 	println(str.String("abc").Is("ab*"))
 	println(str.String("abc").InArray([]string{"abc", "def"}))
 	// ...
+
 }

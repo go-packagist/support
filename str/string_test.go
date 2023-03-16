@@ -17,6 +17,10 @@ func TestString_Md5(t *testing.T) {
 	assert.Equal(t, "900150983cd24fb0d6963f7d28e17f72", String("abc").Md5())
 }
 
+func TestString_Sha1(t *testing.T) {
+	assert.Equal(t, "a9993e364706816aba3e25717850c26c9cd0d89d", String("abc").Sha1())
+}
+
 func TestString_Strpos(t *testing.T) {
 	assert.Equal(t, 0, String("aabbcc").Strpos("a"))
 }

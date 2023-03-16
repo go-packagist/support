@@ -30,6 +30,10 @@ func TestMd5(t *testing.T) {
 	assert.Equal(t, "900150983cd24fb0d6963f7d28e17f72", Md5("abc"))
 }
 
+func TestSha1(t *testing.T) {
+	assert.Equal(t, "a9993e364706816aba3e25717850c26c9cd0d89d", Sha1("abc"))
+}
+
 func TestStrpos(t *testing.T) {
 	assert.Equal(t, 0, Strpos("aabbcc", "a"))
 	assert.Equal(t, 2, Strpos("aabbcc", "b"))

@@ -2,6 +2,7 @@ package str
 
 import (
 	"crypto/md5"
+	"crypto/sha1"
 	"fmt"
 	"math/rand"
 	"regexp"
@@ -52,6 +53,17 @@ func InArray(needle string, haystack []string) bool {
 //	Md5("abc") // 900150983cd24fb0d6963f7d28e17f72
 func Md5(s string) string {
 	sm := md5.Sum([]byte(s))
+
+	return fmt.Sprintf("%x", sm)
+}
+
+// Sha1 returns the sha1 hash of a string.
+//
+// Example:
+//
+//	Sha1("abc") // a9993e364706816aba3e25717850c26c9cd0d89d
+func Sha1(s string) string {
+	sm := sha1.Sum([]byte(s))
 
 	return fmt.Sprintf("%x", sm)
 }

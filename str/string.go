@@ -17,6 +17,11 @@ func (s String) Md5() string {
 	return Md5(string(s))
 }
 
+// Sha1 returns the sha1 hash of a string.
+func (s String) Sha1() string {
+	return Sha1(string(s))
+}
+
 // Strpos returns the position of the first occurrence of a substring in a string.
 func (s String) Strpos(substr string) int {
 	return Strpos(string(s), substr)
