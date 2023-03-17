@@ -18,6 +18,11 @@ func InArray(val int, arr []int) bool {
 	return false
 }
 
+// Contains returns true if val is in arr.
+func Contains(arr []int, val int) bool {
+	return InArray(val, arr)
+}
+
 // Itoa converts an int to a string.
 func Itoa(i int) string {
 	return strconv.Itoa(i)
@@ -100,9 +105,37 @@ func Sum(v ...int) int {
 	return sum
 }
 
+// SumSlice returns the sum of a slice of ints.
+func SumSlice(v []int) int {
+	return Sum(v...)
+}
+
 // Between returns true if val is between min and max.
 func Between(val, min, max int) bool {
 	min, max = Min(min, max), Max(min, max)
 
 	return val >= min && val <= max
+}
+
+// Sort alias for SortAsc.
+func Sort(slice []int) []int {
+	return SortAsc(slice)
+}
+
+// SortAsc sorts a slice of ints in ascending order.
+func SortAsc(slice []int) []int {
+	return Sort(slice)
+}
+
+// SortDesc sorts a slice of ints in descending order.
+func SortDesc(slice []int) []int {
+	for i := 0; i < len(slice); i++ {
+		for j := i + 1; j < len(slice); j++ {
+			if slice[i] < slice[j] {
+				slice[i], slice[j] = slice[j], slice[i]
+			}
+		}
+	}
+
+	return slice
 }
