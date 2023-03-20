@@ -1,6 +1,7 @@
 # Support
 
-[![Go Version](https://badgen.net/github/release/go-packagist/support/stable)](https://github.com/go-packagist/support/releases)
+![Go](https://badgen.net/badge/Go/%3E=1.18/orange)
+[![packagist Version](https://badgen.net/github/release/go-packagist/support/stable)](https://github.com/go-packagist/support/releases)
 [![GoDoc](https://pkg.go.dev/badge/github.com/go-packagist/support)](https://pkg.go.dev/github.com/go-packagist/support)
 [![codecov](https://codecov.io/gh/go-packagist/support/branch/master/graph/badge.svg?token=5TWGQ9DIRU)](https://codecov.io/gh/go-packagist/support)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-packagist/support)](https://goreportcard.com/report/github.com/go-packagist/support)
