@@ -10,6 +10,11 @@ func TestInArray(t *testing.T) {
 	assert.False(t, InArray(4, []int{1, 2, 3}))
 }
 
+func TestContains(t *testing.T) {
+	assert.True(t, Contains([]int{1, 2, 3}, 1))
+	assert.False(t, Contains([]int{1, 2, 3}, 4))
+}
+
 func TestItoa(t *testing.T) {
 	assert.Equal(t, "1", Itoa(1))
 	assert.Equal(t, "2", Itoa(2))
@@ -61,9 +66,32 @@ func TestSum(t *testing.T) {
 	assert.Equal(t, 15, Sum(1, 2, 3, 4, 5))
 }
 
+func TestSumSlice(t *testing.T) {
+	assert.Equal(t, 6, SumSlice([]int{1, 2, 3}))
+	assert.Equal(t, 10, SumSlice([]int{1, 2, 3, 4}))
+	assert.Equal(t, 15, SumSlice([]int{1, 2, 3, 4, 5}))
+}
+
 func TestBetween(t *testing.T) {
 	assert.True(t, Between(1, 1, 3))
 	assert.True(t, Between(2, 1, 3))
 	assert.True(t, Between(3, 1, 3))
 	assert.False(t, Between(4, 1, 3))
+}
+
+func TestSort(t *testing.T) {
+	// Sort
+	assert.Equal(t, []int{1, 2, 3}, Sort([]int{1, 2, 3}))
+	assert.Equal(t, []int{1, 2, 3}, Sort([]int{2, 3, 1}))
+	assert.Equal(t, []int{1, 2, 3}, Sort([]int{3, 2, 1}))
+
+	// SortAsc
+	assert.Equal(t, []int{1, 2, 3}, SortAsc([]int{1, 2, 3}))
+	assert.Equal(t, []int{1, 2, 3}, SortAsc([]int{2, 3, 1}))
+	assert.Equal(t, []int{1, 2, 3}, SortAsc([]int{3, 2, 1}))
+
+	// SortDesc
+	assert.Equal(t, []int{3, 2, 1}, SortDesc([]int{1, 2, 3}))
+	assert.Equal(t, []int{3, 2, 1}, SortDesc([]int{2, 3, 1}))
+	assert.Equal(t, []int{3, 2, 1}, SortDesc([]int{3, 2, 1}))
 }

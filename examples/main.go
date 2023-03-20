@@ -24,6 +24,10 @@ func strsCase() {
 	println(strs.Length("张三")) // 2
 	println(strs.Strcut("abc", 0, 1))
 	println(strs.Limit("abc", 1, "..."))
+	println(strs.Sha1("abc"))
+	println(strs.Strpos("aabbcc", "a"))
+	println(strs.Strrpos("aabbcc", "a"))
+	println(strs.Strrev("abc"))
 
 	// strs Atoi
 	println(strs.Atoi("1").Val())
@@ -48,6 +52,9 @@ func strsCase() {
 	println(strs.String("张三").Length()) // 2
 	println(strs.String("abc").Strcut(0, 1))
 	println(strs.String("abc").Limit(1, "..."))
+
+	// Type Runes
+	println(strs.Runes("abc").Len())
 }
 
 func intsCase() {

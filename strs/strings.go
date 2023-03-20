@@ -194,7 +194,12 @@ func StrPad(s string, length int, pad string, padType StrPadType) string {
 //	Length("abc") // 3
 //	Length("张三李四") // 4
 func Length(s string) int {
-	return len([]rune(s))
+	return Runes(s).Len()
+}
+
+// Len is alias of Length.
+func Len(s string) int {
+	return Length(s)
 }
 
 // Strcut returns a string with a specified length starting from a specified position.
@@ -227,9 +232,9 @@ func Strcut(s string, start, length int) string {
 //	Limit("张三李四", 2) // "张三"
 //	Limit("张三李四", 2, "...") // "张三..."
 func Limit(s string, length int, suffix ...string) string {
-	sr, sf := []rune(s), ""
+	r, sf := Runes(s), ""
 
-	if len(sr) <= length {
+	if r.Len() <= length {
 		return s
 	}
 
@@ -237,5 +242,71 @@ func Limit(s string, length int, suffix ...string) string {
 		sf = suffix[0]
 	}
 
-	return string(sr[:length]) + sf
+	return r.Substr(0, length) + sf
+}
+
+// Ucfirst returns a string with the first character in uppercase.
+func Ucfirst(str string) string {
+	r := Runes(str)
+
+	if r.Len() < 1 {
+		return str
+	}
+
+	return strings.ToUpper(r.Substr(0, 1)) + r.Substr(1, r.Len())
+}
+
+// Lcfirst returns a string with the first character in lowercase.
+func Lcfirst(str string) string {
+	r := Runes(str)
+
+	if r.Len() < 1 {
+		return str
+	}
+
+	return strings.ToLower(r.Substr(0, 1)) + r.Substr(1, r.Len())
+}
+
+// ReplaceVars replaces all occurrences of the search strings with the replacement strings.
+func ReplaceVars(str string, vars map[string]string) string {
+	for key, value := range vars {
+		str = strings.ReplaceAll(str, "{"+key+"}", value)
+	}
+
+	return str
+}
+
+// HtmlspecialcharsDecode converts special HTML entities back to characters.
+func HtmlspecialcharsDecode(str string) string {
+	str = strings.ReplaceAll(str, "&amp;", "&")
+	str = strings.ReplaceAll(str, "&lt;", "<")
+	str = strings.ReplaceAll(str, "&gt;", ">")
+	str = strings.ReplaceAll(str, "&quot;", "\"")
+	str = strings.ReplaceAll(str, "&#039;", "'")
+
+	return str
+}
+
+// Htmlspecialchars converts special characters to HTML entities.
+func Htmlspecialchars(str string) string {
+	str = strings.ReplaceAll(str, "&", "&amp;")
+	str = strings.ReplaceAll(str, "<", "&lt;")
+	str = strings.ReplaceAll(str, ">", "&gt;")
+	str = strings.ReplaceAll(str, "\"", "&quot;")
+	str = strings.ReplaceAll(str, "'", "&#039;")
+
+	return str
+}
+
+// Trim returns a string with whitespace stripped from the beginning and end of str.
+func Trim(str string) string {
+	return strings.TrimSpace(str)
+}
+
+// IsUuid returns true if the string is a valid UUID.
+func IsUuid(str string) bool {
+	pattern := "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+	match, _ := regexp.MatchString(pattern, str)
+
+	return match
 }

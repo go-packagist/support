@@ -79,3 +79,26 @@ func TestString_Limit(t *testing.T) {
 func TestString_Length(t *testing.T) {
 	assert.Equal(t, 3, String("abc").Length())
 }
+
+func TestString_Ucfirst(t *testing.T) {
+	assert.Equal(t, "Abc", String("abc").Ucfirst())
+}
+
+func TestString_Lcfirst(t *testing.T) {
+	assert.Equal(t, "abc", String("Abc").Lcfirst())
+}
+
+func TestString_HTml(t *testing.T) {
+	assert.Equal(t, "a&lt;b&gt;c", String("a<b>c").Htmlspecialchars())
+	assert.Equal(t, "a<b>c", String("a&lt;b&gt;c").HtmlspecialcharsDecode())
+}
+
+func TestString_Trim(t *testing.T) {
+	assert.Equal(t, "abc", String(" abc ").Trim())
+	assert.Equal(t, "abc", String("\r abc \n\r").Trim())
+}
+
+func TestString_IsUuid(t *testing.T) {
+	assert.True(t, String("b2c6b2d0-0dc2-11e8-8eb2-f2801f1b9fd1").IsUuid())
+	assert.False(t, String("b2c6b2d0-0dc2-11e8-8eb2-f2801f1b9fd").IsUuid())
+}

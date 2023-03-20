@@ -84,6 +84,10 @@ func TestStrPad(t *testing.T) {
 func TestLength(t *testing.T) {
 	assert.Equal(t, 3, Length("abc"))
 	assert.Equal(t, 4, Length("张三李四"))
+
+	// len alias `Length`
+	assert.Equal(t, 3, Len("abc"))
+	assert.Equal(t, 4, Len("张三李四"))
 }
 
 func TestStrcut(t *testing.T) {
@@ -102,4 +106,36 @@ func TestLimit(t *testing.T) {
 	assert.Equal(t, "", Limit("abc", 0))
 	assert.Equal(t, "张三", Limit("张三李四", 2))
 	assert.Equal(t, "张...", Limit("张三李四", 1, "..."))
+}
+
+func TestUcfirst(t *testing.T) {
+	assert.Equal(t, "Abc", Ucfirst("abc"))
+	assert.Equal(t, "张三", Ucfirst("张三"))
+}
+
+func TestLcfirst(t *testing.T) {
+	assert.Equal(t, "abc", Lcfirst("Abc"))
+	assert.Equal(t, "张三", Lcfirst("张三"))
+}
+
+func TestReplaceVars(t *testing.T) {
+	assert.Equal(t, "adc", ReplaceVars("a{b}c", map[string]string{"b": "d"}))
+	assert.Equal(t, "adc", ReplaceVars("a{b}c", map[string]string{"b": "d", "c": "e"}))
+}
+
+func TestHtml(t *testing.T) {
+	assert.Equal(t, "a&lt;b&gt;c", Htmlspecialchars("a<b>c"))
+	assert.Equal(t, "a<b>c", HtmlspecialcharsDecode("a&lt;b&gt;c"))
+}
+
+func TestTrim(t *testing.T) {
+	assert.Equal(t, "abc", Trim(" abc "))
+	assert.Equal(t, "abc", Trim("abc"))
+	assert.Equal(t, "abc", Trim("\r abc \n"))
+}
+
+func TestIsUuid(t *testing.T) {
+	assert.True(t, IsUuid("f81d4fae-7dec-11d0-a765-00a0c91e6bf6"))
+	assert.False(t, IsUuid("f81d4fae-7dec-11d0-a765-00a0c91e6bf"))
+	assert.False(t, IsUuid("f81d4fae-7dec-11d0-a765-00a0c91e6bf6a"))
 }

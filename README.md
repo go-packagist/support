@@ -1,6 +1,7 @@
 # Support
 
-[![Go Version](https://badgen.net/github/release/go-packagist/support/stable)](https://github.com/go-packagist/support/releases)
+![Go](https://badgen.net/badge/Go/%3E=1.18/orange)
+[![packagist Version](https://badgen.net/github/release/go-packagist/support/stable)](https://github.com/go-packagist/support/releases)
 [![GoDoc](https://pkg.go.dev/badge/github.com/go-packagist/support)](https://pkg.go.dev/github.com/go-packagist/support)
 [![codecov](https://codecov.io/gh/go-packagist/support/branch/master/graph/badge.svg?token=5TWGQ9DIRU)](https://codecov.io/gh/go-packagist/support)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-packagist/support)](https://goreportcard.com/report/github.com/go-packagist/support)
@@ -15,8 +16,7 @@ go get github.com/go-packagist/support
 
 ## Usage
 
-```go
-package main
+```gopackage main
 
 import (
 	"github.com/go-packagist/support/ints"
@@ -42,6 +42,10 @@ func strsCase() {
 	println(strs.Length("张三")) // 2
 	println(strs.Strcut("abc", 0, 1))
 	println(strs.Limit("abc", 1, "..."))
+	println(strs.Sha1("abc"))
+	println(strs.Strpos("aabbcc", "a"))
+	println(strs.Strrpos("aabbcc", "a"))
+	println(strs.Strrev("abc"))
 
 	// strs Atoi
 	println(strs.Atoi("1").Val())
@@ -66,6 +70,9 @@ func strsCase() {
 	println(strs.String("张三").Length()) // 2
 	println(strs.String("abc").Strcut(0, 1))
 	println(strs.String("abc").Limit(1, "..."))
+
+	// Type Runes
+	println(strs.Runes("abc").Len())
 }
 
 func intsCase() {
