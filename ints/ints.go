@@ -124,7 +124,15 @@ func Sort(slice []int) []int {
 
 // SortAsc sorts a slice of ints in ascending order.
 func SortAsc(slice []int) []int {
-	return Sort(slice)
+	for i := 0; i < len(slice); i++ {
+		for j := i + 1; j < len(slice); j++ {
+			if slice[i] > slice[j] {
+				slice[i], slice[j] = slice[j], slice[i]
+			}
+		}
+	}
+
+	return slice
 }
 
 // SortDesc sorts a slice of ints in descending order.
