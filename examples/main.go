@@ -52,6 +52,9 @@ func strsCase() {
 	println(strs.String("张三").Length()) // 2
 	println(strs.String("abc").Strcut(0, 1))
 	println(strs.String("abc").Limit(1, "..."))
+
+	// Type Runes
+	println(strs.Runes("abc").Len())
 }
 
 func intsCase() {
