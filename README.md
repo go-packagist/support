@@ -16,7 +16,8 @@ go get github.com/go-packagist/support
 
 ## Usage
 
-```gopackage main
+```go
+package main
 
 import (
 	"github.com/go-packagist/support/ints"
