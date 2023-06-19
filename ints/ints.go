@@ -31,13 +31,13 @@ func Itoa(i int) string {
 // Split splits a string into an array of ints.
 func Split(s, sep string) []int {
 	split := strings.Split(s, sep)
-	arr := make([]int, len(split))
+	result := make([]int, len(split))
 
 	for i, v := range split {
-		arr[i] = strs.Atoi(v).Val()
+		result[i] = strs.Atoi(v).Val()
 	}
 
-	return arr
+	return result
 }
 
 // Random returns a random int between min and max.
