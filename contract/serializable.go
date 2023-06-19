@@ -1,4 +1,4 @@
-package contracts
+package contract
 
 type Serializable interface {
 	Serialize(data interface{}) ([]byte, error)

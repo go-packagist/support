@@ -1,4 +1,4 @@
-package contracts
+package contract
 
 type Jsonable interface {
 	Json() string
